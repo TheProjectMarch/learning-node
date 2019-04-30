@@ -17,7 +17,17 @@ function printMessage(username, badgeCount, points){
 
 
 //Connect to the API URL(https://teamtreehouse.com/username.json)
+
 const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
+
+//but how do you know when it ends? What? How about it just fucking does?
+let body = "";
+    //Read the data
+    response.on("data", data => body += data.toString());
+    //parse the data
+    response.on('end', () => console.log(typeof body));
+})
+/* const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
     
 
         let body = "";
@@ -33,7 +43,7 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`, response
             console.log(typeof body);
         });
         //Print the data
-});
+}); */
 
 
 
